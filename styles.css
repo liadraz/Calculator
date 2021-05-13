@@ -1,0 +1,39 @@
+body {
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+}
+
+.container {
+    margin: 0 auto;
+    width: 22rem;
+    height: 35rem;
+    border: 2px solid grey;
+}
+
+.display {
+    margin: 0 auto;
+    width: 20rem;
+    height: 5rem;
+    border: 2px solid grey;
+}
+
+.buttons-grid {
+    margin: 0 auto;
+    width: 20rem;
+    height: 25rem;
+    border: 2px solid grey;
+
+}
+.button {
+    margin: 0 auto;
+    width: 4rem;
+    height: 4rem;
+}
+
+.grid {
+    grid-template-columns: (4, 1fr);
+    grid-template-rows: (4, 1fr);
+}
