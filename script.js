@@ -1,3 +1,5 @@
+let buttonsGrid = document.querySelector('.allButtons'); 
+
 // Basic operators 
 function add(a, b) {
     return (a + b);
@@ -16,7 +18,7 @@ function divide(a, b) {
 }
 
 
-function operate(num1, num2) {
+/* function operate(num1, num2) {
     switch (true) {
         case '+':
             add(num1, num2);
@@ -31,7 +33,7 @@ function operate(num1, num2) {
             divide(num1, num2);
             break;
     } 
-}
+} */
 
 // Create Buttons Grid
 function createDigitsGrid() {
@@ -43,14 +45,12 @@ function createDigitsGrid() {
     }
 }
 
-let buttonsGrid = document.querySelector('.buttons-grid'); 
-
-// Create button
+// Create one button
 function createButton() {
     let button = document.createElement('button');
     button.classList.add('button');
     buttonsGrid.appendChild(button);
 }
 
-createDigitsGrid()
+createButton()
 

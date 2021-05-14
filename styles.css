@@ -6,34 +6,37 @@ h2 {
     text-align: center;
 }
 
+/* Main Calculator container */
 .container {
     margin: 0 auto;
-    width: 22rem;
-    height: 35rem;
-    border: 2px solid grey;
+    padding: 2rem;
+    width: 25rem;
+    height: 30rem;
+    background-color: #E6E6E6;
 }
 
 .display {
     margin: 0 auto;
-    width: 20rem;
-    height: 5rem;
-    border: 2px solid grey;
+    width: 100%;
+    height: 15%;
+    background-color: #6E6E6E;
 }
 
-.buttons-grid {
-    margin: 0 auto;
-    width: 20rem;
+/* Buttons section */
+.grid {
+    grid-template-columns: (4, 1fr);
+    grid-template-rows: (4, 1fr);
+}
+
+.allButtons {
+    margin: 0.8rem auto;
+    width: 100%;
     height: 25rem;
-    border: 2px solid grey;
-
+    background-color: red;
 }
+
 .button {
     margin: 0 auto;
     width: 4rem;
     height: 4rem;
-}
-
-.grid {
-    grid-template-columns: (4, 1fr);
-    grid-template-rows: (4, 1fr);
 }
