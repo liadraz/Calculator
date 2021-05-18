@@ -16,21 +16,25 @@ function divide(a, b) {
 }
 
 // Call one of the above functions on 2 numbers
-function operate(num1, num2) {
-    switch (true) {
-        case 'add':
-            add(num1, num2);
+function operate(num1, num2, operator) {
+    const parceNum1 = parseInt(num1);
+    const parceNum2 = parseInt(num2);
+    let result = 0;
+    switch (operator) {
+        case '+':
+            result = add(parceNum1, parceNum2);
             break;
-        case 'subtract':
-            subtract(num1, num2);
+        case '-':
+            result = subtract(parceNum1, parceNum2);
             break;
-        case 'multiply':
-            multiply(num1, num2);
+        case '*':
+            result = multiply(parceNum1, parceNum2);
             break;
-        case 'divide':
-            divide(num1, num2);
+        case '/':
+            result = divide(parceNum1, parceNum2);
             break;
-    } 
+    }
+    console.log(result);
 }
 
 // Populate The Display with digits when clicked
@@ -84,7 +88,7 @@ function populateDisplay(e) {
             addDigitToDisplay('/');
             break;
     }
-    // return value
+    console.log(display.textContent);
 }
 
 // Add text to display
@@ -94,3 +98,22 @@ function addDigitToDisplay(digit) {
     display.appendChild(document.createTextNode(digit));
 }
 
+
+// Step 5...
+    // if operator is pressed 
+        // save num 1
+        // save operation - add/divide/subtruct/multiply 
+    // save num 2
+
+    // if user prees =
+        // operate(num1, num2) with the given operator
+        // update the display with the solution
+
+// Show the Calculation on the display
+const equalSign = document.querySelector('#equal');
+equalSign.addEventListener('click', calculate);
+
+function calculate() {
+    const arr = display.textContent.split('');
+    operate(arr[0], arr[2], arr[1]);
+}
