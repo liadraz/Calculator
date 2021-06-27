@@ -1,2 +1,7 @@
-Calculator created with HTML, CSS and JS.
+# Calculator 
+
+  Basic calculator created with vanilla JS.
+  
+ 
+by The Odin Project.
 
