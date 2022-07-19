@@ -13,18 +13,37 @@ h3 {
 }
 
 /* Main Display Screen */
-.display {
+.main-display {
     margin: 1rem auto;
     width: 80%;
-    height: 4rem;
+    height: 100%;
     border: 2px solid rgb(0, 204, 255);
+}
+
+.curr-dis {
+    width: 100%;
+    height: 4rem;
+    /* border: 1px solid rgb(21, 255, 0); */
+}
+
+.history-dis {
+    width: 100%;
+    height: 1.5rem;
+    /* border: 1px solid rgb(25, 0, 255); */
 }
 
 .font-style {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+}
+
+.font-big {
     font-size: 2.2rem;
+}
+
+.font-small {
+    font-size: 1.2rem;
 }
 
 
