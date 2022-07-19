@@ -8,16 +8,16 @@ h3 {
 
 .container {
     margin: 0 auto;
-    width: 22rem;
+    width: 28rem;
     border: 2px solid red;
 }
 
-/* Display Style */
+/* Main Display Screen */
 .display {
     margin: 1rem auto;
     width: 80%;
     height: 4rem;
-    border: 2px solid red;
+    border: 2px solid rgb(0, 204, 255);
 }
 
 .font-style {
@@ -36,7 +36,7 @@ h3 {
 
 .grid-buttons {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
     gap: 1rem;
 }
@@ -45,4 +45,8 @@ button {
     width: 3.8rem;
     height: 3.8rem;
     border-radius: 25%;
+}
+
+#equal {
+    border: 2px solid rgb(234, 0, 255);
 }
