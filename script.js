@@ -1,27 +1,107 @@
 
 //
-// Variables Definitions
-let firstOper = '';
-let secondOper = '';
-let currOperation = null;
-
-//
 // Query selector divs
 const numberBtns = document.querySelectorAll('.data-number');
-const operatorsBtns = document.querySelectorAll('.data-operator');
+const operatorBtns = document.querySelectorAll('.data-operator');
+
 const equalBtn = document.getElementById('equal');
 const allClearBtn = document.getElementById('all-clear');
 const deleteBtn = document.getElementById('delete');
 const pointBtn = document.getElementById('point');
 const negativeBtn = document.getElementById('negative');
-const display = document.querySelector('.display');
 
-//
-// Even Handling
-window.addEventListener('click', populateDisplay)
+const historyDis = document.querySelector('.history-dis');
+const currDis = document.querySelector('.curr-dis');
 
 
 //
+// Events Handling
+equalBtn.addEventListener('click', Evaluate);
+allClearBtn.addEventListener('click', ClearAllDisplay)
+
+// In case user clicks on a number
+numberBtns.forEach(button =>
+    button.addEventListener('click', () => addNumToDisplay(button.textContent)));
+
+// In case user clicks on operator
+operatorBtns.forEach(button =>
+    button.addEventListener('click', () => setOperator(button.textContent)));
+
+
+
+//
+// Impl of CallBacks
+
+// Populate the current display with the corresponding number.
+function addNumToDisplay(digit_) {
+
+    // Clear screen before adding digits to the number
+    if (currDis.textContent == '0') {
+        currDis.textContent = ''
+    }
+
+    currDis.textContent += digit_;
+}
+
+
+// Populate the history display with the corresponding operator
+function setOperator(operator_) {
+
+    // Do not react if screen is empty
+    if (currDis.textContent == '0') {
+        return;
+    }
+
+    if (historyDis.textContent != '') {
+        Evaluate();
+    }
+    else {
+        historyDis.textContent += `${currDis.textContent} ${operator_} `
+        // Clean the current display
+        currDis.textContent = ''
+    }
+    
+}
+
+
+function Evaluate() {
+    // Convert history display line to an array
+    historyLine = historyDis.textContent.split(' ');
+
+    // Init 
+    firstNum = historyLine[0];
+    secondNum = currDis.textContent;
+    currOperation = historyLine[1]
+    
+    result = operate(firstNum, secondNum, currOperation);
+
+    currDis.textContent = result;
+
+    historyDis.textContent += `${secondNum} `
+}
+
+function ClearAllDisplay() {
+    ClearHistoryDis();
+    ClearCurrentDis();
+
+    firstOper = '';
+    secondOper = '';
+    currOperation = null;
+}
+
+function ClearHistoryDis()
+{
+    historyDis.textContent = '';
+}
+
+function ClearCurrentDis()
+{
+    currDis.textContent = '0';
+}
+
+//
+// Calculation Functions
+
 // Basic Calculator operators 
 function add(a, b) {
     return (a + b);
@@ -44,19 +124,18 @@ function negative(a) {
 }
 
 
-//
 // Call one of the above functions on 2 numbers
 function operate(num1_, num2_, operator_) {
 
     const num1 = Number(num1_);
     const num2 = Number(num2_);
     
-    switch (operator) {
+    switch (operator_) {
         case '+':
             return add(num1, num2);
         case '-':
             return subtract(num1, num2);
-        case '*':
+        case 'x':
             return multiply(num1, num2);
         case '/':
             if (num2_ === 0) {
@@ -67,26 +146,3 @@ function operate(num1_, num2_, operator_) {
             return null;
     }
 }
-
-
-// Populate the calculator display with the corresponded button value
-function populateDisplay(e) {
-
-    let selection = e.target.textContent;
-
-    // In case user clicks on number
-    if (selection >= '0' && selection <= '9') {
-        addDigitToDisplay(selection);
-    }
-    // In case user clicks on operator
-    else if (selection === '+' || selection === '-' || selection === 'X' || selection === '/') {
-        console.log(selection);
-    }
-    
-}
-
-
-function addDigitToDisplay(digit) {
-    display.textContent += digit
-}
-
