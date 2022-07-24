@@ -7,8 +7,8 @@ const operatorBtns = document.querySelectorAll('.data-operator');
 const equalBtn = document.getElementById('equal');
 const allClearBtn = document.getElementById('all-clear');
 const deleteBtn = document.getElementById('delete');
-const pointBtn = document.getElementById('point');
 const negativeBtn = document.getElementById('negative');
+const pointBtn = document.getElementById('point');
 
 const historyDis = document.querySelector('.history-dis');
 const currDis = document.querySelector('.curr-dis');
@@ -17,15 +17,18 @@ const currDis = document.querySelector('.curr-dis');
 //
 // Events Handling
 equalBtn.addEventListener('click', Evaluate);
-allClearBtn.addEventListener('click', ClearAllDisplay)
+allClearBtn.addEventListener('click', ClearAllScreen)
+deleteBtn.addEventListener('click', DeleteDigit)
+negativeBtn.addEventListener('click', Negation)
+pointBtn.addEventListener('click', ToFloat)
 
 // In case user clicks on a number
 numberBtns.forEach(button =>
-    button.addEventListener('click', () => addNumToDisplay(button.textContent)));
+    button.addEventListener('click', () => AddNumToDisplay(button.textContent)));
 
 // In case user clicks on operator
 operatorBtns.forEach(button =>
-    button.addEventListener('click', () => setOperator(button.textContent)));
+    button.addEventListener('click', () => SetOperator(button.textContent)));
 
 
 
@@ -33,7 +36,7 @@ operatorBtns.forEach(button =>
 // Impl of CallBacks
 
 // Populate the current display with the corresponding number.
-function addNumToDisplay(digit_) {
+function AddNumToDisplay(digit_) {
 
     // Clear screen before adding digits to the number
     if (currDis.textContent == '0') {
@@ -45,59 +48,82 @@ function addNumToDisplay(digit_) {
 
 
 // Populate the history display with the corresponding operator
-function setOperator(operator_) {
+function SetOperator(operator_) {
 
     // Do not react if screen is empty
     if (currDis.textContent == '0') {
         return;
     }
 
+    // In case history line is occupied
     if (historyDis.textContent != '') {
         Evaluate();
     }
-    else {
-        historyDis.textContent += `${currDis.textContent} ${operator_} `
-        // Clean the current display
-        currDis.textContent = ''
-    }
     
+    historyDis.textContent = `${currDis.textContent} ${operator_} `
+    // Clean the current display
+    currDis.textContent = ''
 }
 
 
 function Evaluate() {
+    
     // Convert history display line to an array
     historyLine = historyDis.textContent.split(' ');
 
-    // Init 
+    // Stop calculation in case evaluation already occurred
+    if (historyLine[0] === '' || historyLine.find(element => element === '=')) {
+        return;
+    }
+
+    // Init variables as two operands and operator
     firstNum = historyLine[0];
     secondNum = currDis.textContent;
-    currOperation = historyLine[1]
-    
-    result = operate(firstNum, secondNum, currOperation);
+    currOperation = historyLine[1];
 
+    // Check division in 0
+    if ('0' === secondNum && '/' === currOperation) {
+        currDis.textContent = 'Infinity';
+        historyDis.textContent += `${secondNum} =`
+    }
+
+    result = RoundResult(operate(firstNum, secondNum, currOperation));
+
+    // Update the display screens
     currDis.textContent = result;
-
-    historyDis.textContent += `${secondNum} `
+    historyDis.textContent += `${secondNum} =`
 }
 
-function ClearAllDisplay() {
-    ClearHistoryDis();
-    ClearCurrentDis();
-
-    firstOper = '';
-    secondOper = '';
-    currOperation = null;
-}
-
-function ClearHistoryDis()
-{
+function ClearAllScreen() {
     historyDis.textContent = '';
-}
-
-function ClearCurrentDis()
-{
     currDis.textContent = '0';
 }
+
+function DeleteDigit() {
+    let str = currDis.textContent;
+    currDis.textContent = str.slice(0, -1);
+}
+
+function Negation() {
+    currDis.textContent *= -1;
+}
+
+function ToFloat() {
+    // Check if decimal point already exists
+    if (currDis.textContent.includes('.')) {
+        return;
+    }
+
+    currDis.textContent += '.';
+}
+
+
+//
+// Utility Functions
+function RoundResult(num_) {
+    return Math.round(num_ * 1000) / 1000;
+}
+
 
 //
 // Calculation Functions
