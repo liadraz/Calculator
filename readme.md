@@ -1,10 +1,7 @@
 # Calculator 
 
-An online calculator with basic arithmetic operations. 
+An online calculator with basic arithmetic operations implemented with Javascript, CSS3 and HTML5. 
 
-Implemented by Javascript, CSS3 and HTML5. 
-
-It can be controlled by a mouse or by a keyboard.
   
 
 ## Features
@@ -12,5 +9,7 @@ It can be controlled by a mouse or by a keyboard.
 - Supports calculations on floating numbers.
 - Convert a number to negative.
 - Clear the whole display or delete a single digit.
+- Can be used by a mouse or a keyboard.
 
-> This is the final project in the Foundation path taking by 'The Odin Project'.
+
+> This is the final project in the Foundation path - The Odin Project.
