@@ -1,49 +1,73 @@
+@font-face {
+    font-family: "Digital-7";
+    src: url(style/digital-7/digital-7.ttf);
+}
+
+@font-face {
+    font-family: "Digit";
+    src: url(style/digit/01\ Digit.ttf);
+}
+
 body {
     box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-h3 {
-    text-align: center;
+main {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+
+    margin: 5rem auto;
+    margin-bottom: 2rem;
 }
 
-.container {
-    margin: 0 auto;
-    width: 28rem;
-    border: 2px solid red;
+.calculator {
+    max-width: 26.5rem;
+    width: 100%;
+    /* border: 8px solid black; */
+    background-color: #423B43;
+
+    border-radius: 1.8rem;
 }
 
 /* Main Display Screen */
 .main-display {
-    margin: 1rem auto;
+    margin: 3rem auto;
+    padding: 0.6rem 1rem;
     width: 80%;
-    height: 100%;
-    border: 2px solid rgb(0, 204, 255);
+    background-color: #acb48f;
+    
+    border-radius: 0.4em;
 }
 
 .curr-dis {
     width: 100%;
-    height: 4rem;
-    /* border: 1px solid rgb(21, 255, 0); */
+    height: 3rem;
+    /* border: 1px solid green; */
 }
 
 .history-dis {
     width: 100%;
     height: 1.5rem;
-    /* border: 1px solid rgb(25, 0, 255); */
+    /* border: 1px solid green; */
 }
 
 .font-style {
     display: flex;
     justify-content: flex-end;
-    align-items: center;
+    align-items: start;
 }
 
 .font-big {
-    font-size: 2.2rem;
+    font-size: 3.5rem;
+    font-family: "Digital-7";
 }
 
 .font-small {
     font-size: 1.2rem;
+    font-family: "Digit";
 }
 
 
@@ -64,8 +88,17 @@ button {
     width: 3.8rem;
     height: 3.8rem;
     border-radius: 25%;
+    background: #B3AEB4;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
 }
 
 #equal {
     border: 2px solid rgb(234, 0, 255);
+}
+
+footer {
+    text-align: center;
+
 }
