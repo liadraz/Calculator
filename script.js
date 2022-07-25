@@ -51,6 +51,11 @@ function AddNumToDisplay(digit_) {
         currDis.textContent = ''
     }
 
+    // Limit the biggest number that can be calculated
+    if (currDis.textContent.length > 11) {
+        return;
+    }
+
     currDis.textContent += digit_;
 }
 
