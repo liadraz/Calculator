@@ -22,15 +22,23 @@ deleteBtn.addEventListener('click', DeleteDigit)
 negativeBtn.addEventListener('click', Negation)
 pointBtn.addEventListener('click', ToFloat)
 
+
 // In case user clicks on a number
 numberBtns.forEach(button =>
     button.addEventListener('click', () => AddNumToDisplay(button.textContent)));
+    
+    // In case user clicks on operator
+    operatorBtns.forEach(button =>
+        button.addEventListener('click', () => SetOperator(button.textContent)));
+        
+//
+// keyboard Handles
+window.addEventListener('keydown', keyHandler);
 
-// In case user clicks on operator
-operatorBtns.forEach(button =>
-    button.addEventListener('click', () => SetOperator(button.textContent)));
-
-
+function keyHandler(e) {
+    console.log(e);
+    // TODO:
+}
 
 //
 // Impl of CallBacks
