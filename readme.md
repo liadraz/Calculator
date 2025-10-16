@@ -1,15 +1,17 @@
-# Calculator 
+# 🧮 Calculator
 
-An online calculator with basic arithmetic operations implemented with Javascript, CSS3 and HTML5. 
-
-  
+A fully functional online calculator built with **JavaScript**, **HTML5**, and **CSS3**<br>
+featuring my **own custom UI and design**.
 
 ## Features
-- Supports basic operations: divide, multiple, add, and subtract.
-- Supports calculations on floating numbers.
-- Convert a number to negative.
-- Clear the whole display or delete a single digit.
-- Can be used by a mouse or a keyboard.
+- Performs basic operations: addition, subtraction, multiplication, and division.  
+- Handles floating-point calculations accurately.  
+- Allows converting numbers to negative values.  
+- Includes clear-all and backspace (single-digit delete) functions.  
+- Works seamlessly with both mouse and keyboard inputs.  
+
+## Demo
+[👉 Play it here](https://liadraz.github.io/Calculator/)
 
 
-> This is the final project in the Foundation path - The Odin Project.
+> This project was created as part of **The Odin Project** full-stack web development course.
